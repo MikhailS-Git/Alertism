@@ -350,3 +350,5 @@ function Toast(text = "This is a Toast.", Tbackground, Tcolor)
 		toast.className = toast.classList.remove("active");
 	}, 2000);
 }
+
+/* Mikhail added this comment at 14:30 Moscow time 18 April 2021 */

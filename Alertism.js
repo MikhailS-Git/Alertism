@@ -351,4 +351,66 @@ function Toast(text = "This is a Toast.", Tbackground, Tcolor)
 	}, 2000);
 }
 
+
+
+
+
 /* Mikhail added this comment at 14:30 Moscow time 18 April 2021 */
+
+
+/* 
+Mikhail added this on 19 April 2021
+
+This function adds a scroll-to-top button on the page
+
+*/
+
+function ScrollToTop(params){
+  
+   var size = params.size || 60
+   var color = params.color || "#aaa8"
+   var speed = params.speed || 40
+
+
+    const css = `.scroll_to_top_button{position:fixed;bottom:30px;right:30px;z-index:9999}.ri-arrow-up-circle-fill{font-size:${size}px;color:${color};cursor:pointer}`
+    
+    const head = document.head || document.getElementsByTagName("head")[0]
+
+    const style = document.createElement("style")
+    style.type = "text/css"
+
+    if (style.Stylesheet){
+        style.Stylesheet.cssText = css
+    } else {
+        style.appendChild(document.createTextNode(css))
+    }
+
+    const link = document.createElement("link")
+    link.setAttribute("rel", "stylesheet")
+    link.setAttribute("href", "https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css")
+
+    head.appendChild(link)
+    head.appendChild(style)
+
+
+    const button = document.createElement("div")
+    button.className = "scroll_to_top_button"
+    const i = document.createElement("i")
+    i.className = "ri-arrow-up-circle-fill"
+    button.appendChild(i)
+    document.body.appendChild(button)
+
+    button.addEventListener("click", Scroll)
+   
+    function Scroll() {
+
+        let interval = setInterval(function(){
+            document.documentElement.scrollBy(0, -speed)
+
+            if (document.documentElement.scrollTop <= 0) {
+                clearInterval(interval)
+            }
+        }, 5)
+    }
+
+}
